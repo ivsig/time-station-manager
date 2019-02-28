@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Time station</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grid">
+	<div>
+		<header>
+		    <h2>Name of the company</h2>
+	    </header>
+	</div>
+
+	<aside>	
+		<form action="#" method="get">
+			<label for="login">Enter your login:</label>
+			<input type="text" name="login" id="login"><br>
+			<label for="password">Enter your password:</label>
+			<input type="password" name="password"><br>
+			<input type="submit" name="login" value="Log in" id="log">
+		</form>
+        <button id="in">IN</button>
+        <button id="out">OUT</button>
+	</aside>
+<article>
+	<p class="proj">Select current project</p>
+		<form action="#" method="get">
+			<select name="project" multiple>
+				<option value="devo">DEVO</option>
+				<option value="pase">PASE</option>
+				<option value="learn">Learning</option>
+				<option value="tech">Tech</option>
+				<option value="meeting">Meeting</option>
+				<option value="managment">Managment</option>
+				<option value="other">Other</option>
+			</select>
+			<label>
+				<input type="radio" name="in" value="IN"> You`re IN;
+			</label>
+			<label>
+				<input type="radio" name="out" value="OUT"> You`re OUT
+			</label>
+			<label>
+				<input type="submit" name="start" value="Start">
+			</label>
+		</form><br>
+		<button id="leave">Leave on Break</button>
+		<button id="return">Return from Break</button>
+</article>
+<footer>Footer information</footer>
+</div>
+<div id="time"></div>
+
+<script>
+	function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  }
+  return i;
+}
+
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('time').innerHTML = h + ":" + m + ":" + s;
+  t = setTimeout(function() {
+    startTime()
+  }, 500);
+}
+startTime();
+</script>
+</body>
+</html>
